@@ -1,4 +1,4 @@
-CPATH='.:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar'
+CPATH='.;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar'
 
 rm -rf student-submission
 git clone $1 student-submission
@@ -17,7 +17,7 @@ fi
 cp ../TestListExamples.java ./
 cp -r ../lib ./
 
-javac -cp ".;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar" ListExamples.java 2>error-output.txt
+javac -cp $CPATH ListExamples.java 2>error-output.txt
 if [[ $? == 0 ]]
 then
     echo "Congrats it compiled"
@@ -27,5 +27,5 @@ else
     exit $?
 fi
 
-java -cp ".;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar" org.junit.runner.JUnitCore TestListExamples >error-output.txt 2>&1
+java -cp $CPATH org.junit.runner.JUnitCore ../TestListExamples >error-output.txt 2>&1
 cat error-output.txt
