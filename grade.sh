@@ -17,7 +17,7 @@ fi
 cp ../TestListExamples.java ./
 cp -r ../lib ./
 
-javac -cp $CPATH ListExamples.java 2>error-output.txt
+javac -cp $CPATH *.java 2>error-output.txt
 if [[ $? == 0 ]]
 then
     echo "Congrats it compiled"
@@ -27,5 +27,5 @@ else
     exit $?
 fi
 
-java -cp $CPATH org.junit.runner.JUnitCore ../TestListExamples >error-output.txt 2>&1
+java -cp $CPATH org.junit.runner.JUnitCore TestListExamples >error-output.txt 2>&1
 cat error-output.txt
